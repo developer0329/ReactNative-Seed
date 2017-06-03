@@ -72,13 +72,7 @@ const SwitcherPage = (props) => (
     >
       Switch!
     </Button>
-    <Button
-      onPress={() => {
-        Actions.launch({ type: ActionConst.RESET });
-      }}
-    >
-      Exit
-    </Button>
+    <Button onPress={() => { Actions.launch({ type: ActionConst.RESET }); }}> Exit </Button>
   </View>
 );
 
@@ -89,78 +83,25 @@ class Example extends Component {
         <Scene key="modal" component={Modal} >
           <Scene key="root" hideNavBar hideTabBar>
             <Scene key="echo" clone component={EchoView} getTitle={(navState) => navState.key} />
-            <Scene
-              key="switcher"
-              component={Switch}
-              selector={() => { return 'text1'; }}
-            >
-              <Scene
-                key="text1"
-                text="text1"
-                component={(props) => <SwitcherPage
-                  {...props}
-                  text={currentSwitchPage}
-                />}
-              />
-              <Scene
-                key="text2"
-                text="text2"
-                component={(props) => <SwitcherPage
-                  {...props}
-                  text={currentSwitchPage}
-                />}
-              />
+            <Scene key="switcher" component={Switch} selector={() => { return 'text1'; }}>
+              <Scene key="text1" text="text1" component={(props) => <SwitcherPage {...props} text={currentSwitchPage}/>}/>
+              <Scene key="text2" text="text2" component={(props) => <SwitcherPage {...props} text={currentSwitchPage}/>}/>
             </Scene>
-            <Scene key="register" component={Register} title="Register" />
-            <Scene key="register2" component={Register} title="Register2" duration={1} />
-            <Scene key="home" component={Home} title="Replace" type={ActionConst.REPLACE} />
+            <Scene key="register" component={Register} title="Register"/>
+            <Scene key="register2" component={Register} title="Register2" duration={1}/>
+            <Scene key="home" component={Home} title="Replace" type={ActionConst.REPLACE}/>
             <Scene key="launch" component={Launch} title="Launch" initial />
             <Scene key="login" component={Login} title="Login" />
             <Scene key="tabbar" component={NavigationDrawer}>
-              <Scene
-                key="main"
-                tabs
-                tabBarStyle={styles.tabBarStyle}
-                tabBarSelectedItemStyle={styles.tabBarSelectedItemStyle}
-              >
-                <Scene
-                  key="tab1"
-                  title="Tab #1"
-                  icon={TabIcon}
-                  navigationBarStyle={{ backgroundColor: 'red' }}
-                  titleStyle={{ color: 'white' }}
-                >
-                  <Scene
-                    key="tab1_1"
-                    component={TabView}
-                    title="Tab #1_1"
-                    onRight={() => alert('Right button')}
-                    rightTitle="Right"
-                  />
-                  <Scene
-                    key="tab1_2"
-                    component={TabView}
-                    title="Tab #1_2"
-                    titleStyle={{ color: 'black' }}
-                  />
+              <Scene key="main" tabs tabBarStyle={styles.tabBarStyle} tabBarSelectedItemStyle={styles.tabBarSelectedItemStyle}>
+                <Scene key="tab1" title="Tab #1" icon={TabIcon} navigationBarStyle={{ backgroundColor: 'red' }} titleStyle={{ color: 'white' }}>
+                  <Scene key="tab1_1" component={TabView} title="Tab #1_1" onRight={() => alert('Right button')} rightTitle="Right"/>
+                  <Scene key="tab1_2" component={TabView} title="Tab #1_2" titleStyle={{ color: 'black' }}/>
                 </Scene>
                 <Scene key="tab2" initial title="Tab #2" icon={TabIcon}>
-                  <Scene
-                    key="tab2_1"
-                    component={TabView}
-                    title="Tab #2_1"
-                    renderRightButton={() => <Text>Right</Text>}
-                  />
-                  <Scene
-                    key="tab2_2"
-                    component={TabView}
-                    title="Tab #2_2"
-                    hideBackImage
-                    onBack={() => alert('Left button!')}
-                    backTitle="Left"
-                    duration={1}
-                    panHandlers={null}
-                  />
+                  <Scene key="tab2_1" component={TabView} title="Tab #2_1" renderRightButton={() => <Text>Right</Text>}/>
+                  <Scene key="tab2_2" component={TabView} title="Tab #2_2" hideBackImage onBack={() => alert('Left button!')}
+                    backTitle="Left" duration={1} panHandlers={null}/>
                 </Scene>
                 <Scene key="tab3" component={TabView} title="Tab #3" hideTabBar icon={TabIcon} />
                 <Scene key="tab4" component={TabView} title="Tab #4" hideNavBar icon={TabIcon} />

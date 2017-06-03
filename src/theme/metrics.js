@@ -6,7 +6,9 @@ const bottomMargin = 24;
 
 const metrics = {
   screenWidth: width < height ? width : height,
-  screenHeight: screenHeightTmp,  
+  screenHeight: screenHeightTmp,
+  inputCtrlHeight: 40,
+  mainPadding: 10, 
 };
 
 export default metrics;
